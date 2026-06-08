@@ -39,7 +39,13 @@ metadata:
 spec:
   containers:
   - name: gpu-container
-    image: nginx    
+    image: ubuntu
+    command: ["bash", "-c", "sleep 100000;"]
+    env:
+      - name: "NODE_NAME"
+        valueFrom:
+	  fieldRef:
+	    fieldPath: "spec.nodeName"
     resources:
       limits:
         nvidia.com/gpu: 1
@@ -76,13 +82,19 @@ cat << EOF > test-simulate-usage-workload.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: gpu-simulate-usage-pod
+  name: gpu-test-simulate-pod
   annotations:
     run.ai/simulated-gpu-utilization: "10-30"  # Simulate 10-30% GPU usage
 spec:
   containers:
   - name: gpu-container
-    image: nginx    
+    image: ubuntu
+    command: ["bash", "-c", "sleep 100000;"]
+    env:
+      - name: "NODE_NAME"
+        valueFrom:
+	  fieldRef:
+	    fieldPath: "spec.nodeName"
     resources:
       limits:
         nvidia.com/gpu: 1
