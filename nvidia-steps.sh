@@ -50,10 +50,6 @@ kubectl label node node-01 run.ai/simulated-gpu-node-pool-
 
 # try and show to do the above deployment again.
 # it will show that the pod is in pending state
-
-# let the people know that the pod gets allocated with a gpu currently deployed to it
-# you can even add labels to a pod such that it simulates and gives out fake metrics
-# about gpu usage
 #
 #
 #
@@ -65,9 +61,15 @@ kubectl label node node-01 run.ai/simulated-gpu-node-pool-
 #
 # with the above message
 
+
 # set the node label again
 # label a node so that fake-gpu-operator starts working
 kubectl label node node-01 run.ai/simulated-gpu-node-pool=default
+
+
+# let the people know that the pod gets allocated with a gpu currently deployed to it
+# you can even add labels to a pod such that it simulates and gives out fake metrics
+# about gpu usage
 
 # deploy a test workload
 cat << EOF > test-simulate-usage-workload.yaml
