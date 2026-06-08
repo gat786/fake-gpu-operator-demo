@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# You can find mentions of Fake GPU Operator on Nvidia Cloud Functions Documentations
+# https://docs.nvidia.com/nvcf/fake-gpu-operator
+
+# Cloud Functions is a new Nvidia Project available here 
+# https://docs.nvidia.com/nvcf/overview
+
 # install kwok
 kubectl apply -f https://github.com/kubernetes-sigs/kwok/releases/download/v0.7.0/kwok.yaml
 
