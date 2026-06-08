@@ -89,6 +89,15 @@ EOF
 # it exposes metrics which can be viewed via metrics server apis but our 
 # current clusters do not export metrics by default i.e. k8s-omni
 
+# install metrics server
+wget https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+# edit the deployment to use
+# --kubelet-insecure-tls
+
+# apply
+kubectl apply -f components.yaml
+
 # I tried setting up a metrics server and was able to do so quickly by disabling
 # metrics server but the default metrics server made by kubernetes does not yet
 # export metrics for gpu resources and the kubectl top pods or kubectl top nodes
